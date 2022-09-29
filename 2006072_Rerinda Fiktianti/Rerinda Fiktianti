@@ -1,1 +1,33 @@
+#import library math
+import math
 
+#Mendeklarasikan fungsi persamaan x**2 - 2*x - 8
+def fungsi(x):
+    x = float((x**2) - (2*x)-8)
+    return x
+
+#turunan fungsi persamaan
+def fungsiturunan(x):
+    x = float((2*x) - (2))
+    return x
+
+#Inputan untuk nilai tebakan awal, error/epsilon, maks perulangan
+x = float(input('Masukkan nilai tebakan awal = '))
+error = float(input('Masukkan nilai toleransi error = '))
+perulangan = int(input('Masukkan jumlah maksimal pengulangan iterasi = '))
+
+#Deklarasikan iterasi = 0 untuk perulangan yang ke 0 nantinya dan akan ditambah setiap kali perulalgnan
+iterasi = 0
+selisih = error+1
+
+#Lakukan perulangan dengan kondisi iterasi kurang dari sama dengan inputan maksimal iterasi dan selisih lebih dari error/epsilon
+while iterasi <= perulangan  and selisih>error :
+    iterasi += 1
+    f_2 = x - (fungsi(x)/fungsiturunan(x))
+    selisih = math.fabs(f_2 - x)
+    x = f_2
+    print("\nIterasi ke = ",iterasi,", x = ",f_2, ", f(",f_2,") = ",fungsi(f_2),", selisih = ",error)
+    if iterasi <= perulangan: #Jika pengecekan selisih > error bernilai true maka toleransi akan terpenuhi dengan nilai error serta fungsi x pada iterasi ke n
+        print("Perulangan Mencapai Batas Maksimal dengan hasil = ", f_2)
+    else : #Jika mencapai nilai true maka toleransi tidak terpenuhi namun perulangan sudah mencapai batas
+        print("Toleransi tidak terpenuhi")
