@@ -1,1 +1,35 @@
-
+def newtons(f,df,x0): #Mendefinisikan fungsi dengan nama newtons
+  e = 10**-5 #Batas perkiraan f(x) mendekati 0
+  N = 10 #Iterasi
+  for i in range (0,N):
+    #abs = Mengembalikan nilai absolut dari angka yang diberikan
+    #f disini merupakan variabel yang berisi rumus SPL sesuai soal
+    #jika abs f(x0) kurang dari batas perkiraan f(x)
+    if abs(f(x0)) < e: 
+        #maka akan mengembalikan nilai x0
+        #x0 merupakan nilai awal atau perkiraan akar x
+        return x0 
+    #df disini merupakan turunan dari rumus SPL yang diberikan
+    #Jika df(x0) sama dengan 0
+    if df(x0) == 0:
+        #Maka akan mencetak kata-kata "Nilai derivative bernilai 0 atau zero derivative"
+        print("Zero derivative")
+        return None
+    #Kemudian akan melakukan rumus seperti yang sudah dilakukan pada langkah manual
+    #Dimana nilai x baru diambil pada nilai x0 dikurangi dengan hasil pembagian f(x0) dengan df(x0)
+    x0 = x0 - f(x0)/df(x0)
+  #Mencetak kata-kata "Iterasi sudah maksimal" atau "Maximum Iteration"
+  print("Maximum iteration")
+  #Mengembalikan nilai ke x0 sebelumnya
+  return x0
+  
+#Mulai mengatur rumus f, df, dan memasukkan nilai x0
+f = lambda x: x**2-2*x-8
+df = lambda x: 2*x-2
+x0 = 2
+#Menggunakan fungsi newtons yang sudah didefinisikan
+#Kemudian memasukkannya ke dalam variabel x_root
+x_root = newtons(f,df,x0)
+#Mencetak hasil akhirnya
+print('Result : ', x_root)
+    #Ketika di run, hasilnya "Result :  4.000000001396984"
